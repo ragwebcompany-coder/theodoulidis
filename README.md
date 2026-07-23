@@ -19,7 +19,8 @@ perioches/<περιοχή>.html        6 τοπικές σελίδες SEO (Θε
 blog/index.html                Blog (hub)
 blog/<άρθρο>.html               6 άρθρα (long-tail keywords)
 sitemap.xml, robots.txt        Τεχνικό SEO
-assets/                        logo.svg, dr-vasilis.svg, dr-iakovos.svg (placeholders)
+assets/                        λογότυπο (logo-emblem/-wordmark, ±-light), favicons,
+                               og-image.png · dr-vasilis.svg, dr-iakovos.svg (placeholders)
 styles.css, main.js            Κοινό στυλ & συμπεριφορά
 build/                         Γεννήτρια (data.mjs + build.mjs)
 ```
@@ -49,10 +50,13 @@ node build/build.mjs
 
 ## ⚠️ Πριν το live — επιβεβαιώστε/διορθώστε
 
-1. **Εικόνες (placeholders)**: τα `assets/logo.svg`, `dr-vasilis.svg`, `dr-iakovos.svg`
-   είναι προσωρινά. Αντικαταστήστε με το πραγματικό λογότυπο και τις φωτογραφίες των
-   ιατρών (ίδια ονόματα αρχείων, ή ενημερώστε τα paths στο `data.mjs`/`build.mjs`).
-   Για social sharing (og:image) προτείνεται και ένα `logo` σε PNG/JPG ~1200×630.
+1. **Εικόνες**: το λογότυπο είναι πλέον το πραγματικό (από τα BMP του πελάτη) — έμβλημα
+   + wordmark, σε δύο χρωματικές εκδοχές: `logo-emblem/-wordmark.png` (wine `#874f5e`,
+   για το header) και `-light.png` (cream, για το σκούρο footer). Από το έμβλημα
+   παράγονται και τα `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`,
+   `favicon.ico`, καθώς και το og:image 1200×630 (`assets/og-image.png`).
+   Τα `dr-vasilis.svg`, `dr-iakovos.svg` παραμένουν **placeholders** — αντικαταστήστε
+   τα με τις φωτογραφίες των ιατρών (ίδια ονόματα αρχείων, ή ενημερώστε τα paths).
 2. **Φόρμα επικοινωνίας**: χρησιμοποιεί το [FormSubmit](https://formsubmit.co)
    (δωρεάν, χωρίς backend), με στόχο το `dr.theodoulidis@gmail.com`. Στην **πρώτη**
    υποβολή, το FormSubmit στέλνει email ενεργοποίησης — πατήστε το link μία φορά για

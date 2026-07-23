@@ -133,12 +133,33 @@ a { color: inherit; text-decoration: none; }
   justify-content: space-between;
   min-height: 84px;
 }
-.brand-logo {
-  height: 60px;
+.brand {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.55rem, 1.2vw, 0.85rem);
+}
+.brand-emblem {
+  height: 52px;
   width: auto;
   transition: height .4s var(--ease);
 }
-.scrolled .brand-logo { height: 50px; }
+.brand-lockup { display: block; }
+.brand-wordmark {
+  height: 26px;
+  width: auto;
+  transition: height .4s var(--ease);
+}
+.brand-sub {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--plum);
+  opacity: 0.75;
+}
+.scrolled .brand-emblem { height: 44px; }
+.scrolled .brand-wordmark { height: 22px; }
 
 .nav-links {
   list-style: none;
@@ -636,13 +657,13 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px solid rgba(241, 220, 217, 0.18);
 }
 .footer-logo {
-  height: 70px;
-  width: auto;
-  background: var(--cream);
-  border-radius: 12px;
-  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
   margin-bottom: 1rem;
 }
+.footer-emblem { height: 62px; width: auto; }
+.footer-wordmark { height: 28px; width: auto; }
 .footer-tag { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--blush); margin: 0; }
 .footer-col h3 {
   font-family: var(--serif);
@@ -1135,6 +1156,9 @@ a.svc:hover .svc-more { color: var(--rose); transform: translateX(4px); }
 }
 
 @media (max-width: 620px) {
+  .brand-emblem, .scrolled .brand-emblem { height: 42px; }
+  .brand-wordmark, .scrolled .brand-wordmark { height: 21px; }
+  .brand-sub { display: none; }
   .footer-inner { grid-template-columns: 1fr; gap: 1.8rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .contact-list li { grid-template-columns: 1fr; gap: 0.2rem; }

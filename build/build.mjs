@@ -33,8 +33,8 @@ const clinicLD = {
   url: BASE + "/",
   telephone: BIZ.phoneIntl,
   email: BIZ.email,
-  image: abs("assets/logo.svg"),
-  logo: abs("assets/logo.svg"),
+  image: abs("assets/og-image.png"),
+  logo: abs("assets/icon-512.png"),
   medicalSpecialty: ["Gynecologic", "Obstetric", "Urogynecology", "GynecologicOncology"],
   priceRange: "€€",
   currenciesAccepted: "EUR",
@@ -82,7 +82,7 @@ const faqLD = (faq) => ({
 });
 
 // ---- <head> ---------------------------------------------------------
-function head({ depth, title, desc, canonical, keywords, ld = [], image = "assets/logo.svg", type = "website" }) {
+function head({ depth, title, desc, canonical, keywords, ld = [], image = "assets/og-image.png", type = "website" }) {
   const r = (p) => rel(depth, p);
   const ldTags = ld.map(jsonLd).join("\n  ");
   return `
@@ -111,8 +111,10 @@ function head({ depth, title, desc, canonical, keywords, ld = [], image = "asset
   <meta name="twitter:description" content="${attr(desc)}" />
   <meta name="twitter:image" content="${abs(image)}" />
 
-  <link rel="icon" type="image/svg+xml" href="${r("assets/logo.svg")}" />
-  <link rel="apple-touch-icon" href="${r("assets/logo.svg")}" />
+  <link rel="icon" href="${r("favicon.ico")}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="${r("assets/favicon-32.png")}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="${r("assets/icon-512.png")}" sizes="512x512" />
+  <link rel="apple-touch-icon" href="${r("assets/apple-touch-icon.png")}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -134,7 +136,11 @@ function header(depth, active = "") {
   <header class="site-header" id="top">
     <nav class="nav container" aria-label="Κύρια πλοήγηση">
       <a href="${r("index.html")}" class="brand" aria-label="${attr(BIZ.name)} — Αρχική">
-        <img src="${r("assets/logo.svg")}" alt="${attr(BIZ.name)}" class="brand-logo" width="200" height="120" />
+        <img src="${r("assets/logo-emblem.png")}" alt="" class="brand-emblem" width="481" height="461" />
+        <span class="brand-lockup">
+          <img src="${r("assets/logo-wordmark.png")}" alt="${attr(BIZ.name)}" class="brand-wordmark" width="489" height="66" />
+          <span class="brand-sub">Μαιευτική · Γυναικολογία</span>
+        </span>
       </a>
       <button class="nav-toggle" aria-label="Άνοιγμα μενού" aria-expanded="false"><span></span><span></span><span></span></button>
       <ul class="nav-links">
@@ -197,7 +203,10 @@ function footer(depth) {
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="${r("assets/logo.svg")}" alt="${attr(BIZ.name)}" class="footer-logo" width="200" height="120" />
+        <span class="footer-logo">
+          <img src="${r("assets/logo-emblem-light.png")}" alt="" class="footer-emblem" width="481" height="461" />
+          <img src="${r("assets/logo-wordmark-light.png")}" alt="${attr(BIZ.name)}" class="footer-wordmark" width="489" height="66" />
+        </span>
         <p class="footer-tag">${esc(BIZ.tagline)}</p>
         <p class="footer-addr">
           ${esc(BIZ.street)}, ${esc(BIZ.floor)}<br />
@@ -806,7 +815,7 @@ function pagePost(p) {
       datePublished: p.date,
       dateModified: p.date,
       inLanguage: "el",
-      image: abs("assets/logo.svg"),
+      image: abs("assets/og-image.png"),
       mainEntityOfPage: abs("blog/" + p.slug + ".html"),
       author: { "@type": "Organization", name: BIZ.name },
       publisher: { "@id": `${BASE}/#clinic` },
