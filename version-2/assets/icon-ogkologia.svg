@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Γυναικολογική ογκολογία">
+  <g fill="none" stroke="#f5e1e4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="60" cy="60" r="52" opacity="0.45"/>
+    <path d="M60 88 C34 70 34 46 48 40 C56 36 60 44 60 44 C60 44 64 36 72 40 C86 46 86 70 60 88 Z"/>
+  </g>
+</svg>

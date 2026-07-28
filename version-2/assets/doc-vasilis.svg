@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Δρ. Βασίλης Θεοδουλίδης">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#eeeef1"/>
+      <stop offset="1" stop-color="#e4e4e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="900" fill="url(#bg)"/>
+  <g fill="#cbbfc2">
+    <circle cx="450" cy="380" r="132"/>
+    <path d="M232 900 C232 664 336 570 450 570 C564 570 668 664 668 900 Z"/>
+  </g>
+</svg>

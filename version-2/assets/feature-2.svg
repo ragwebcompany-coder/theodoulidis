@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Εξατομικευμένη φροντίδα">
+  <rect width="900" height="900" fill="#f5e1e4"/>
+  
+  <circle cx="450" cy="450" r="290" fill="#9b6673" opacity="0.2"/>
+  <path d="M240 560 C340 400 560 400 660 560" stroke="#9b6673" stroke-width="16" fill="none" opacity="0.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Υποδοχή ιατρείου">
+  <rect width="900" height="900" fill="#e4e4e9"/>
+  
+  <path d="M0 620 C220 470 400 700 640 560 C760 490 830 560 900 520 L900 900 L0 900 Z" fill="#9b6673" opacity="0.35"/>
+  <circle cx="620" cy="280" r="130" fill="#ffffff" opacity="0.6"/>
+</svg>
