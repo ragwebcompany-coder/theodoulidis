@@ -5,20 +5,7 @@
 (Μαιευτήρας — Γυναικολόγος · Ουρογυναικολόγος), στο κέντρο της Θεσσαλονίκης.
 Παλέτα λευκό / απαλό γκρι / dusty rose (pastel).
 
-## Δύο εκδόσεις
-
-| Φάκελος | Layout | Σημειώσεις |
-|---|---|---|
-| `version-1/` | Το αρχικό layout (τύπου Dental Harmony Clinic) | Η έκδοση που υπήρχε ήδη — αμετάβλητη |
-| `version-2/` | Layout αντιγραμμένο από **drvenetis.com** | Ίδιο περιεχόμενο, νέα δομή & στυλ |
-
-Και οι δύο εκδόσεις έχουν **ακριβώς το ίδιο περιεχόμενο**: μοιράζονται πανομοιότυπο
-`build/data.mjs` (κείμενα, ιατροί, υπηρεσίες, περιοχές, άρθρα, στοιχεία επικοινωνίας).
-Διαφέρουν μόνο σε `build/build.mjs`, `styles.css` και `main.js`.
-
-Κάθε φάκελος είναι αυτόνομος — ανεβάζετε τα περιεχόμενα του ενός στο root του domain.
-
-### Τι αλλάζει στο version 2 (δομή drvenetis.com)
+## Layout (δομή drvenetis.com)
 
 - **Header**: κεντραρισμένο λογότυπο, μενού από κάτω, τηλέφωνο πάνω δεξιά, dropdown υπομενού.
 - **Αρχική** με τη σειρά ενοτήτων του reference: cover με τρεις κυκλικές φωτογραφίες &
@@ -29,7 +16,7 @@
 - Οι εικόνες είναι **placeholders** (`build/assets.mjs`) — αντικαταστήστε τα SVG στο
   `assets/` με πραγματικές φωτογραφίες (τετράγωνες 1:1 για τους κύκλους, 4:3 για τα άρθρα).
 
-## Δομή κάθε έκδοσης (25 σελίδες)
+## Δομή (25 σελίδες)
 
 ```
 index.html                     Αρχική
@@ -43,9 +30,10 @@ blog/index.html                Blog (hub)
 blog/<άρθρο>.html               6 άρθρα (long-tail keywords)
 sitemap.xml, robots.txt        Τεχνικό SEO
 assets/                        λογότυπο (logo-emblem/-wordmark, ±-light), favicons,
-                               og-image.png · dr-vasilis.svg, dr-iakovos.svg (placeholders)
+                               og-image.png · placeholder SVG (hero-*, doc-*, card-*,
+                               feature-*, icon-*, post-*)
 styles.css, main.js            Κοινό στυλ & συμπεριφορά
-build/                         Γεννήτρια (data.mjs + build.mjs)
+build/                         Γεννήτρια (data.mjs + build.mjs + assets.mjs)
 ```
 
 ## SEO που υλοποιήθηκε
@@ -62,20 +50,19 @@ build/                         Γεννήτρια (data.mjs + build.mjs)
 
 ## Αναγέννηση σελίδων
 
-Όλο το κείμενο/δεδομένα ζουν στο `build/data.mjs` **κάθε έκδοσης**. Μετά από αλλαγή:
+Όλο το κείμενο/δεδομένα ζουν στο `build/data.mjs`. Μετά από αλλαγή:
 
 ```bash
-cd version-1 && node build/build.mjs     # ή
-cd version-2 && node build/build.mjs
+node build/build.mjs
 ```
 
 Παράγει ξανά όλες τις σελίδες + sitemap + robots. (`styles.css` & `main.js` είναι
-χειρόγραφα — δεν τα ακουμπά η γεννήτρια. Στο version 2, το `build/assets.mjs`
-ξαναφτιάχνει και τα placeholder SVG του `assets/` — σβήστε το από το build αν βάλετε
-πραγματικές φωτογραφίες με τα ίδια ονόματα.)
+χειρόγραφα — δεν τα ακουμπά η γεννήτρια. Το `build/assets.mjs` ξαναφτιάχνει τα
+placeholder SVG του `assets/` — αφαιρέστε το `generateAssets()` από το `build.mjs`
+όταν βάλετε πραγματικές φωτογραφίες με τα ίδια ονόματα, αλλιώς θα τις σβήσει.)
 
-> Αν αλλάξετε κείμενο, ενημερώστε το `data.mjs` **και στις δύο** εκδόσεις για να
-> παραμείνουν συγχρονισμένες (τα δύο αρχεία είναι σκόπιμα πανομοιότυπα).
+> Το προηγούμενο layout (version 1) παραμένει στο ιστορικό του git, στο commit
+> `8d3356c` (φάκελος `version-1/`), αν χρειαστεί ποτέ ανάκτηση.
 
 ## ⚠️ Πριν το live — επιβεβαιώστε/διορθώστε
 
@@ -84,8 +71,10 @@ cd version-2 && node build/build.mjs
    για το header) και `-light.png` (cream, για το σκούρο footer). Από το έμβλημα
    παράγονται και τα `favicon-32.png`, `apple-touch-icon.png`, `icon-512.png`,
    `favicon.ico`, καθώς και το og:image 1200×630 (`assets/og-image.png`).
-   Τα `dr-vasilis.svg`, `dr-iakovos.svg` παραμένουν **placeholders** — αντικαταστήστε
-   τα με τις φωτογραφίες των ιατρών (ίδια ονόματα αρχείων, ή ενημερώστε τα paths).
+   Οι **φωτογραφίες είναι placeholders** (παράγονται από το `build/assets.mjs`).
+   Αντικαταστήστε με πραγματικές, ίδια ονόματα αρχείων:
+   `doc-vasilis.svg`/`doc-iakovos.svg` & `hero-1..3`, `card-*`, `feature-*`
+   (τετράγωνες 1:1 — εμφανίζονται ως κύκλοι) και `post-1..6` (4:3, άρθρα).
 2. **Φόρμα επικοινωνίας**: χρησιμοποιεί το [FormSubmit](https://formsubmit.co)
    (δωρεάν, χωρίς backend), με στόχο το `dr.theodoulidis@gmail.com`. Στην **πρώτη**
    υποβολή, το FormSubmit στέλνει email ενεργοποίησης — πατήστε το link μία φορά για
